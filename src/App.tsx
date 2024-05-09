@@ -1,9 +1,11 @@
 import './App.css';
+import Header from './components/Header';
+import logoImg from '../public/logo.png';
 
 function App() {
 	return (
 		<>
-			<h1>Hello World</h1>
+			<Header image={{ src: logoImg, alt: 'A women' }} />
 		</>
 	);
 }
