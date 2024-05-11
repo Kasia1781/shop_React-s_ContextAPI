@@ -1,5 +1,6 @@
 import { forwardRef, type ReactNode, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import Cart from './Cart';
 
 export type ModalHandle = {
 	actions?: ReactNode;
@@ -21,8 +22,8 @@ const Modal = forwardRef<ModalHandle>(function Modal({ actions }, ref) {
 
 	return createPortal(
 		<dialog ref={dialog} id='modal'>
-			<h2>TYTUŁ</h2>
-			DANE PRODUKTU
+			<h2>Your cart</h2>
+			<Cart />
 			<form method='dialog' id='modal-actions'>
 				{actions}
 			</form>
