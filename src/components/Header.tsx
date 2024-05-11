@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { type ReactNode, useRef } from 'react';
 import Modal, { ModalHandle } from './Modal';
 
 type HeaderProps = {
@@ -15,9 +15,11 @@ export default function Header({ image }: HeaderProps) {
 		modal.current?.open();
 	}
 
+	const modalAction: ReactNode = <button>Close</button>;
+
 	return (
 		<>
-			<Modal ref={modal} />
+			<Modal ref={modal} actions={modalAction} />
 			<header id='main-header'>
 				<div id='main-title'>
 					<img {...image} />

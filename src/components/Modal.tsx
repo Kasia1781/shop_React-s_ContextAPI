@@ -1,11 +1,12 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, type ReactNode, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ModalHandle = {
+	actions?: ReactNode;
 	open: () => void;
 };
 
-const Modal = forwardRef<ModalHandle>(function Modal(_, ref) {
+const Modal = forwardRef<ModalHandle>(function Modal({ actions }, ref) {
 	const dialog = useRef<HTMLDialogElement>(null);
 
 	useImperativeHandle(ref, () => {
@@ -23,7 +24,7 @@ const Modal = forwardRef<ModalHandle>(function Modal(_, ref) {
 			<h2>TYTUŁ</h2>
 			DANE PRODUKTU
 			<form method='dialog' id='modal-actions'>
-				AKCJA
+				{actions}
 			</form>
 		</dialog>,
 		document.getElementById('modal')!
