@@ -1,3 +1,5 @@
+import { useCartContext } from '../store/shopping-cart-context';
+
 type ProductProps = {
 	product: {
 		id: string;
@@ -9,6 +11,8 @@ type ProductProps = {
 };
 
 export default function Product({ product }: ProductProps) {
+	const { addItemToCart } = useCartContext();
+
 	return (
 		<article className='product'>
 			<img src={product.image} alt={product.title} />
@@ -19,7 +23,7 @@ export default function Product({ product }: ProductProps) {
 					<p>{product.description}</p>
 				</div>
 				<div className='product-actions'>
-					<button>Add To Card</button>
+					<button onClick={() => addItemToCart(product.id)}>Add To Card</button>
 				</div>
 			</div>
 		</article>
