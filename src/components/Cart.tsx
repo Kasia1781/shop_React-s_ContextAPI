@@ -16,17 +16,23 @@ export default function Cart() {
 			{items.length === 0 && <p>No items in cart!</p>}
 			{items.length > 0 && (
 				<ul id='cart-items'>
-					<li>
-						<div>
-							<span>NAME</span>
-							<span> PRICE</span>
-						</div>
-						<div className='cart-item-actions'>
-							<button>-</button>
-							<span>QUANTITY</span>
-							<button>+</button>
-						</div>
-					</li>
+					{items.map((item) => {
+						const formattedPrice = `$${item.price.toFixed(2)}`;
+
+						return (
+							<li key={item.id}>
+								<div>
+									<span>{item.name}</span>
+									<span> ({formattedPrice})</span>
+								</div>
+								<div className='cart-item-actions'>
+									<button>-</button>
+									<span>{item.quantity}</span>
+									<button>+</button>
+								</div>
+							</li>
+						);
+					})}
 				</ul>
 			)}
 			<p id='cart-total-price'>

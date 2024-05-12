@@ -1,7 +1,6 @@
 import { forwardRef, type ReactNode, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Cart from './Cart';
-import { useCartContext } from '../store/shopping-cart-context';
 
 export type ModalHandle = {
 	actions?: ReactNode;
