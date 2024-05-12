@@ -1,4 +1,9 @@
+import { useCartContext } from '../store/shopping-cart-context';
+
 export default function Cart() {
+	const cartCtx = useCartContext();
+	console.log(cartCtx?.items);
+
 	return (
 		<div id='cart'>
 			<ul id='cart-items'>
