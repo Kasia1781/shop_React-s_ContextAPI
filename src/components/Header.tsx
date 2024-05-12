@@ -1,5 +1,6 @@
 import { type ReactNode, useRef } from 'react';
 import Modal, { ModalHandle } from './Modal';
+import { useCartContext } from '../store/shopping-cart-context';
 
 type HeaderProps = {
 	image: {
@@ -10,6 +11,10 @@ type HeaderProps = {
 
 export default function Header({ image }: HeaderProps) {
 	const modal = useRef<ModalHandle>(null);
+
+	const { items } = useCartContext();
+
+	const cartQuantity = items.length;
 
 	function handleOpenCartClick() {
 		modal.current?.open();
@@ -26,7 +31,7 @@ export default function Header({ image }: HeaderProps) {
 					<h1>Elegant Context</h1>
 				</div>
 				<div>
-					<button onClick={handleOpenCartClick}>Cart(0)</button>
+					<button onClick={handleOpenCartClick}>Cart ({cartQuantity})</button>
 				</div>
 			</header>
 		</>
