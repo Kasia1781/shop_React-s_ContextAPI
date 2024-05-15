@@ -20,7 +20,16 @@ export default function Header({ image }: HeaderProps) {
 		modal.current?.open();
 	}
 
-	const modalAction: ReactNode = <button>Close</button>;
+	let modalAction: ReactNode = <button>Close</button>;
+
+	if (cartQuantity > 0) {
+		modalAction = (
+			<>
+				<button>Close</button>
+				<button>Checkout</button>
+			</>
+		);
+	}
 
 	return (
 		<>
