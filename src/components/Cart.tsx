@@ -1,7 +1,7 @@
 import { useCartContext } from '../store/shopping-cart-context';
 
 export default function Cart() {
-	const { items } = useCartContext();
+	const { items, updatedItemQuantity } = useCartContext();
 	console.log(items);
 
 	const totalPrice = items.reduce(
@@ -26,9 +26,13 @@ export default function Cart() {
 									<span> ({formattedPrice})</span>
 								</div>
 								<div className='cart-item-actions'>
-									<button>-</button>
+									<button onClick={() => updatedItemQuantity(item.id, -1)}>
+										-
+									</button>
 									<span>{item.quantity}</span>
-									<button>+</button>
+									<button onClick={() => updatedItemQuantity(item.id, 1)}>
+										+
+									</button>
 								</div>
 							</li>
 						);
